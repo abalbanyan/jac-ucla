@@ -6,7 +6,7 @@ export default class MainBanner extends Component {
     render(){
         return (
             <div className="main">
-                <img src={stamp}/>
+                <img src={stamp} alt=""/>
             </div>
         );
     }
