@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CONTENT from './content.json';
+// import CONTENT from './content.json';
 import NavBar from './comp/navbar.jsx';
 import Main from './comp/main.jsx';
 import About from './comp/about.jsx';
@@ -12,14 +12,29 @@ import Fresh from './comp/fresh.jsx';
 import Footer from './comp/footer.jsx';
 
 class App extends React.Component {
+  state = {CONTENT: {
+      "meetingroom" : "",
+      "meetingday": "",
+      "meetingtime" : "",
+      "about" : []
+    }
+  }
+
+  /* Retrieve content from database. */
+  componentDidMount() {
+    fetch('/mongo')
+      .then(res => res.json().then(res => this.state.CONTENT = res))
+      .then(_ => this.setState(this.state.CONTENT));
+  }
+
   render() {
     return (
       <div>
       <NavBar />
         <div className="container">
-          <Main content={CONTENT} />
+          <Main content={this.state.CONTENT} />
           <span id="id_about" className="anchor"></span>
-          <About content={CONTENT} />
+          <About content={this.state.CONTENT} />
           <span id="id_fresh" className="anchor"></span>
           <Fresh />          
           <span id="id_kirigami" className="anchor"></span>

@@ -1,0 +1,36 @@
+html
+    title JAC Site Content
+    center
+        h4 JAC Site Content - This page is for JAC admins to modify site content. (BETA)
+
+        form(action="/setcontent", name="setcontent", method="post")
+            div.input
+                h4(style="color: red;") PASSWORD
+                input(type="password", name="contentpass")
+            br
+            br
+            div.input
+                h4 Meeting Room
+                input(type="text", name="meetingroom", value='#{meetingroom}')
+            div.input
+                h4 Meeting Day
+                input(type="text", name="meetingday", value='#{meetingday}')
+            div.input
+                h4 Meeting Time
+                input(type="text", name="meetingtime", value='#{meetingtime}')
+            div.input
+                h4 About
+                textarea(style="height: 200px; width: 70%;", type="text", name="about") #{about}
+            br
+            div.input
+                h4 New Password
+                h5 (Leave blank if no modification needs to be made.)
+                input(type="text", name="newpass", )
+            div.input
+                h4 Confirm New Password
+                input(type="text", name="newpassconfirm")
+
+            br
+            div.actions
+                input(type="submit", value="Submit")
+            
