@@ -67,8 +67,10 @@ app.post('/setcontent', function(req, res) {
 
       console.log("Updated content.");
       // Update content in database as well.
+      res.render('status', {status: "Your content has been saved.", link: "http://www.jacatucla.moe"});
+    } else {
+      res.render('status', {status: "Password was incorrect!", link: "/setcontent"});
     }
-    res.redirect("/");
   });
 });
 
